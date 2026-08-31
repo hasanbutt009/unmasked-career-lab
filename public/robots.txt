@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://unmaskedcareerlab.org
+
+# Sitemaps
+Sitemap: https://unmaskedcareerlab.org/sitemap.xml

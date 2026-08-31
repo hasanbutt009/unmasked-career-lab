@@ -1,0 +1,92 @@
+@import "tailwindcss";
+
+:root {
+  --ink: #1b1a17;
+  --bone: #f6f1e8;
+  --clay: #c25b36;
+  --teal: #1f5e5b;
+  --sand: #e8decb;
+  --amber: #e9a23b;
+}
+
+@theme inline {
+  --font-sans: var(--font-inter);
+  --font-mono: var(--font-jetbrains-mono);
+  --font-display: var(--font-fraunces);
+}
+
+body {
+  font-family: var(--font-inter), sans-serif;
+}
+
+.grain::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+  opacity: 0.25;
+  background-image: radial-gradient(rgba(27, 26, 23, 0.08) 0.5px, transparent 0.5px);
+  background-size: 4px 4px;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+}
+
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+  z-index: 60;
+  border-radius: 999px;
+  background: var(--ink);
+  color: var(--bone);
+  padding: 0.5rem 1rem;
+}
+
+.font-display {
+  font-family: var(--font-fraunces), serif;
+}
+
+.nav-link {
+  position: relative;
+}
+
+.nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -0.25rem;
+  height: 2px;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 240ms ease;
+  background: var(--clay);
+}
+
+.nav-link:hover::after,
+.nav-link:focus-visible::after {
+  transform: scaleX(1);
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible {
+  outline: 2px solid var(--amber);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
